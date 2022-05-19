@@ -1,0 +1,20 @@
+version: '3'
+services:
+  nginx:
+    build:
+      context: ./requirements/nginx/
+    ports:
+      - "8080:80" #change for VM
+    restart: always
+
+  wordpress:
+    build:
+      context: ./requirements/wordpress/
+    restart: always
+  
+  mariadb:
+    build:
+      context: ./requirements/mariadb/
+    #volumes:
+    #  - ./requirements/mariadb/data:/var/lib/mysql //need to install mariadb to check real data location
+    restart: always
