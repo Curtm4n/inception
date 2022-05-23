@@ -1,20 +1,11 @@
-version: '3'
+version: '3.4'
 services:
   nginx:
+    container_name: nginx
     build:
       context: ./requirements/nginx/
+    #image: nginx
     ports:
-      - "8080:80" #change for VM
-    restart: always
-
-  wordpress:
-    build:
-      context: ./requirements/wordpress/
-    restart: always
-  
-  mariadb:
-    build:
-      context: ./requirements/mariadb/
-    #volumes:
-    #  - ./requirements/mariadb/data:/var/lib/mysql //need to install mariadb to check real data location
+      - "80:80" #change for VM
+    #depends_on:
     restart: always
