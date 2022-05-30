@@ -13,6 +13,5 @@ RUN openrc \
 
 EXPOSE 3306
 
-#Start mariadb service
-#CMD rc-service mariadb start && mysqld
-CMD sleep infinity
+#Start mariadb service and loop
+CMD rc-service mariadb start && sleep infinity

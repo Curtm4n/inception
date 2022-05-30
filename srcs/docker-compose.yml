@@ -1,3 +1,27 @@
-version: '3'
+version: '3.4'
 services:
-  mysql: 
+  nginx:
+    container_name: nginx
+    build:
+      context: ./requirements/nginx/
+    #image: nginx     #PROBABLY USELESS
+    networks:
+      - inception
+    ports:
+      - "8080:80" #change for VM
+    #depends_on:
+    restart: on-failure
+
+  mariadb:
+    container_name: mariadb
+    build:
+      context: ./requirements/mariadb/
+    #image: mariadb    #PROBABLY USELESS
+    networks:
+      - inception
+    ports:
+      - "8081:3306" #change for VM
+    restart: on-failure
+
+networks:
+  inception: {}
