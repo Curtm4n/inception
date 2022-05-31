@@ -1,17 +1,22 @@
-FROM alpine
+FROM alpine:3.15
 
-#Update packages/install openrc and mariadb
-RUN apk update && apk upgrade \
-&& apk add openrc --no-cache \
-&& apk add mariadb mariadb-common mariadb-client
+#Update/upgrade packages list and install openrc and mariadb
+RUN apk update && apk upgrade && apk add \
+	openrc --no-cache \
+	mariadb \
+	mariadb-common \
+	mariadb-client
 
 #Make rc-service usable and setup basic database
 RUN openrc \
-&& touch /run/openrc/softlevel \
-&& /etc/init.d/mariadb setup
-#&& rc-service mariadb start
+	&& touch /run/openrc/softlevel \
+	&& /etc/init.d/mariadb setup
 
+#Add my startup script to the container
+COPY tools/startup.sh /tmp/startup.sh
+
+#Expose the port 3306 for the database
 EXPOSE 3306
 
 #Start mariadb service and loop
-CMD rc-service mariadb start && sleep infinity
+CMD sh /tmp/startup.sh && sleep infinity
