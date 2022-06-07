@@ -1,12 +1,10 @@
-FROM debian:buster
+FROM alpine:3.15
 
-#Update/upgrade packages list and install Nginx
-RUN apt-get update && apt-get upgrade -y && apt-get install -y \
+#Update/upgrade packages list and install nginx
+RUN apk update && apk upgrade && apk add \
 	nginx
 
-#COPY ./default.conf /etc/nginx/conf.d/default.conf
-
-#Expose the port 80 (http) Chanhe this for port 443 (https) when tls will be installed
+#Expose the port 80 (http) Change this for port 443 (https/ssl) when tls will be installed
 EXPOSE 80
 
 #Launch nginx as a service instead of a daemon to keep the container running

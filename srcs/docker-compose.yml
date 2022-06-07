@@ -5,23 +5,13 @@ services:
     build:
       context: ./requirements/nginx/
     #image: nginx     #PROBABLY USELESS
-    networks:
-      - inception
+    depends_on:
+      - wordpress
     ports:
       - "8080:80" #change for VM
-    #depends_on:
-    restart: on-failure
-
-  mariadb:
-    container_name: mariadb
-    build:
-      context: ./requirements/mariadb/
-    #image: mariadb    #PROBABLY USELESS
-    #volumes:          #ADD VOLUME
     networks:
       - inception
-    ports:
-      - "8081:3306" #change for VM
+    #volumes:            #ADD VOLUME
     restart: on-failure
 
   wordpress:
@@ -29,11 +19,21 @@ services:
     build:
       context: ./requirements/wordpress/
     #image: wordpress    #PROBABLY USELESS
-    #volumes:            #ADD VOLUME
+    depends_on:
+      - mariadb
     networks:
       - inception
-    ports:
-      - "8082:9000" #change for VM
+    #volumes:            #ADD VOLUME
+    restart: on-failure
+
+  mariadb:
+    container_name: mariadb
+    build:
+      context: ./requirements/mariadb/
+    #image: mariadb    #PROBABLY USELESS
+    networks:
+      - inception
+    #volumes:          #ADD VOLUME
     restart: on-failure
 
 networks:
