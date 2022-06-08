@@ -19,4 +19,4 @@ COPY tools/startup.sh /tmp/startup.sh
 EXPOSE 3306
 
 #Start mariadb service
-ENTRYPOINT sh /tmp/startup.sh
+ENTRYPOINT ["sh", "/tmp/startup.sh"]

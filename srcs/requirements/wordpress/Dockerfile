@@ -11,4 +11,10 @@ RUN mkdir -p /usr/share/webapps/ \
 && tar -xzvf latest.tar.gz \
 && rm latest.tar.gz
 
-CMD sleep infinity
+#Add my startup script
+COPY tools/startup.sh /tmp/startup.sh
+
+#Expose the port 9000 for the wordpress 
+EXPOSE 9000
+
+ENTRYPOINT ["sh", "/tmp/startup.sh"]

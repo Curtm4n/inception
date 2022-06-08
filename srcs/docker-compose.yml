@@ -4,7 +4,6 @@ services:
     container_name: nginx
     build:
       context: ./requirements/nginx/
-    #image: nginx     #PROBABLY USELESS
     depends_on:
       - wordpress
     ports:
@@ -18,7 +17,6 @@ services:
     container_name: wordpress
     build:
       context: ./requirements/wordpress/
-    #image: wordpress    #PROBABLY USELESS
     depends_on:
       - mariadb
     networks:
@@ -30,7 +28,6 @@ services:
     container_name: mariadb
     build:
       context: ./requirements/mariadb/
-    #image: mariadb    #PROBABLY USELESS
     networks:
       - inception
     #volumes:          #ADD VOLUME
