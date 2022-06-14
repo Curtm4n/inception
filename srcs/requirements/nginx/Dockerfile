@@ -5,8 +5,10 @@ RUN apk update && apk upgrade && apk add \
 	nginx \
 	openssl
 
-#Add my own config file for nginx
+#Add my own config file for nginx and the index.php page
 COPY tools/nginx.conf /etc/nginx/nginx.conf
+#RUN chmod -R 777 /var/www/localhost
+COPY tools/index.php /var/www/html/index.php
 
 #Add my own infos for certificate, create a repo for the pair key/crt and create the self-signed certificate
 COPY tools/openssl.txt /tmp/openssl.txt
