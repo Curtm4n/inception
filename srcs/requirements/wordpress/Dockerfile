@@ -2,7 +2,7 @@ FROM alpine:3.15
 
 #Update/upgrade packages list and install php
 RUN apk update && apk upgrade && apk add \
-	php
+	php-fpm
 
 #Download and install wordpress  A REVOIR
 RUN mkdir -p /usr/share/webapps/ \

@@ -1,3 +1,4 @@
 #!/bin/sh
 
-sleep infinity
+#sleep infinity
+php-fpm7 -F -R
