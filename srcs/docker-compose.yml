@@ -34,4 +34,5 @@ services:
     restart: on-failure
 
 networks:
-  inception: {}
+    inception:
+        driver: bridge
