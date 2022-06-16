@@ -7,10 +7,11 @@ services:
     depends_on:
       - wordpress
     ports:
-      - "8080:443" #change for VM
+      - "443:443" #change for VM
     networks:
       - inception
-    #volumes:            #ADD VOLUME
+    volumes:
+      - /home/cdapurif/data/data:/var/www/html/
     restart: on-failure
 
   wordpress:
@@ -21,7 +22,8 @@ services:
       - mariadb
     networks:
       - inception
-    #volumes:            #ADD VOLUME
+    volumes:
+      - /home/cdapurif/data/data:/var/www/html/
     restart: on-failure
 
   mariadb:
