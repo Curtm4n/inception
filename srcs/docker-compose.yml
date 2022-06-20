@@ -18,22 +18,22 @@ services:
     container_name: wordpress
     build:
       context: ./requirements/wordpress/
-    depends_on:
-      - mariadb
+        #    depends_on:
+        #      - mariadb
     networks:
       - inception
     volumes:
       - /home/cdapurif/data/data:/var/www/html/
     restart: on-failure
 
-  mariadb:
-    container_name: mariadb
-    build:
-      context: ./requirements/mariadb/
-    networks:
-      - inception
-    #volumes:          #ADD VOLUME
-    restart: on-failure
+      #  mariadb:
+      #    container_name: mariadb
+      #    build:
+      #      context: ./requirements/mariadb/
+      #    networks:
+      #      - inception
+      #    #volumes:          #ADD VOLUME
+      #    restart: on-failure
 
 networks:
     inception:
