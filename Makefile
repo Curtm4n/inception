@@ -16,7 +16,7 @@ all:
 	docker-compose -f $(LOC) up -d --build
 
 clean:
-	docker-compose -f $(LOC) down
+	docker-compose -f $(LOC) down --volumes
 
 fclean:	clean
 	docker image prune --all --force

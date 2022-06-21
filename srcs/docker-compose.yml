@@ -11,7 +11,7 @@ services:
     networks:
       - inception
     volumes:
-      - /home/cdapurif/data/data:/var/www/html/
+      - wordpress:/var/www/html/
     restart: on-failure
 
   wordpress:
@@ -23,7 +23,7 @@ services:
     networks:
       - inception
     volumes:
-      - /home/cdapurif/data/data:/var/www/html/
+      - wordpress:/var/www/html/
     restart: on-failure
 
       #  mariadb:
@@ -36,5 +36,13 @@ services:
       #    restart: on-failure
 
 networks:
-    inception:
-        driver: bridge
+  inception:
+    driver: bridge
+
+volumes:
+  wordpress:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '/home/cdapurif/data/wordpress'
