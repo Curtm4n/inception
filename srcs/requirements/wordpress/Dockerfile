@@ -4,9 +4,12 @@ FROM alpine:3.15
 RUN apk update && apk upgrade && apk add \
 	php-fpm
 
-#Download and install wordpress  A REVOIR
-RUN mkdir -p /usr/share/webapps/ \
-&& cd /usr/share/webapps/ \
+#Add my own www.conf to php
+COPY tools/www.conf /etc/php7/php-fpm.d/www.conf
+
+#Download and install wordpress  A REVOIR /usr/share/webapps
+RUN mkdir -p /var/www/html/webapps/ \
+&& cd /var/www/html/webapps/ \
 && wget http://wordpress.org/latest.tar.gz \
 && tar -xzvf latest.tar.gz \
 && rm latest.tar.gz
