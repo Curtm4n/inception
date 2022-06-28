@@ -18,22 +18,23 @@ services:
     container_name: wordpress
     build:
       context: ./requirements/wordpress/
-        #    depends_on:
-        #      - mariadb
+    depends_on:
+      - mariadb
     networks:
       - inception
     volumes:
       - wordpress:/var/www/html/
     restart: on-failure
 
-      #  mariadb:
-      #    container_name: mariadb
-      #    build:
-      #      context: ./requirements/mariadb/
-      #    networks:
-      #      - inception
-      #    #volumes:          #ADD VOLUME
-      #    restart: on-failure
+  mariadb:
+    container_name: mariadb
+    build:
+      context: ./requirements/mariadb/
+    networks:
+      - inception
+    volumes:
+      - mariadb:/var/lib/mysql
+    restart: on-failure
 
 networks:
   inception:
@@ -46,3 +47,9 @@ volumes:
       type: 'none'
       o: 'bind'
       device: '/home/cdapurif/data/wordpress'
+  mariadb:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '/home/cdapurif/data/mariadb'
