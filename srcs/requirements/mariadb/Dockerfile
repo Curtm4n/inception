@@ -9,7 +9,7 @@ RUN apk update && apk upgrade && apk add \
 
 #Make rc-service usable and setup basic database
 #RUN openrc \
-#	&& touch /run/openrc/softlevel \
+#&& touch /run/openrc/softlevel
 #RUN /etc/init.d/mariadb setup
 
 #Add my startup script to the container
