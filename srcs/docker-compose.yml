@@ -7,7 +7,7 @@ services:
     depends_on:
       - wordpress
     ports:
-      - "443:443" #change for VM
+      - "443:443"
     networks:
       - inception
     volumes:
