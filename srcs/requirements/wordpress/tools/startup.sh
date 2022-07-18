@@ -2,10 +2,9 @@
 
 if [ ! -d /var/www/html/wordpress ]
 then
-	cd /var/www/html
-	wget http://wordpress.org/latest.tar.gz
-	tar -xzvf latest.tar.gz
-	rm latest.tar.gz
+	mkdir /var/www/html/wordpress
+	cd /var/www/html/wordpress
+	wp core download --locale=fr_FR
 fi
 
 php-fpm7 -F -R

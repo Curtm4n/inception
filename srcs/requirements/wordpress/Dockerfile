@@ -8,6 +8,7 @@ RUN apk update && apk upgrade && apk add \
 	php-phar \
 	php-json \
 	php7-mysqli \
+	mariadb-client \
 	curl
 
 #Install wp-cli
@@ -17,6 +18,10 @@ RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli
 
 #Add my own www.conf to php
 COPY tools/www.conf /etc/php7/php-fpm.d/www.conf
+
+#####################NEED DOUBLE CHECK###########################
+#Add my config file for mariadb-client (installed for allowing wp-cli to connect to database server)
+COPY tools/mariadb-server.cnf /etc/my.cnf.d/mariadb-server.cnf
 
 #Add my startup script
 COPY tools/startup.sh /tmp/startup.sh
