@@ -8,6 +8,8 @@ RUN apk update && apk upgrade && apk add \
 	php-phar \
 	php-json \
 	php7-mysqli \
+	php-mbstring \
+	php-iconv \
 	mariadb-client \
 	curl
 
