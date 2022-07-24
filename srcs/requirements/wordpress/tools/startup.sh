@@ -1,5 +1,6 @@
 #!/bin/sh
 
+sleep 10
 if [ ! -d /var/www/html/wordpress ]
 then
 	mkdir /var/www/html/wordpress
